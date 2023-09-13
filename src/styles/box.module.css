@@ -1,0 +1,17 @@
+.box {
+    border: "2px inset black";
+ 	font-size: "100px";
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid white; /* Add border to inner boxes */
+}
+
+/* Style alternate boxes */
+.box:nth-child(odd) {
+    background: white; /* Make alternate boxes white */
+    border: 1px solid gray; /* Add border to inner boxes */
+}

@@ -1,0 +1,16 @@
+.button {
+    width: 250px;
+    margin: 0 auto;
+    display: grid;
+    font-size: 40px;
+    font-weight: 700;
+    background: #00b359;
+    color: white;
+    border: None;
+}
+
+button:hover, button:active {
+    font-weight: 1000;
+    background: #00b35a;
+    border: None;
+}
