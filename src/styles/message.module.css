@@ -2,18 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 100px;
     z-index: 100;
-    animation: zoom-in-zoom-out 2s ease-out;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right:0;
+    animation: zoom-in-zoom-out 1s ease-out;
     margin: auto;
     padding: 20px;
     flex-direction: column;
-    background-color: #00b359;
   }
   
 

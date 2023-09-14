@@ -1,4 +1,4 @@
-import tictactoeSlice from './tictactoe_slice';
+import tictactoeSlice from './tictactoe.slice';
 import { configureStore } from '@reduxjs/toolkit'
 
 export default configureStore({

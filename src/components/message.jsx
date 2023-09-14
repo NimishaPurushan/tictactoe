@@ -1,4 +1,4 @@
-import {reset} from '../store/tictactoe_slice.js'
+import {reset} from '../store/tictactoe.slice.js'
 import {useDispatch, useSelector} from 'react-redux'
 import React from 'react'
 import style from '../styles/message.module.css'
@@ -13,16 +13,19 @@ const Message = () => {
     const DialogBox = ({result, onClose}) => {
         return (
             <div className={style.pop}>
-                <h1>Game Over</h1>
-                <h2>{result}</h2>
+                <h2>
+    {result === "draw" ? "DRAW" : result === "X" ? "YOU WON !!" : "COMPUTER WON, TRY AGAIN"}
+                </h2>                
                 <button onClick={onClose}>Close</button>
             </div>
         )
     }
 
     return (
-        <div>
-        {winner && <DialogBox result={winner} onClose={onDialogClose} />}
+        <div style={{position:"relative",
+        display: winner ? "flex" : "none",
+        }}>
+         <DialogBox result={winner} onClose={onDialogClose} />
         </div>
     )
 }

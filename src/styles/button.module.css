@@ -2,6 +2,7 @@
     width: 250px;
     margin: 0 auto;
     display: grid;
+    top: 0;
     font-size: 40px;
     font-weight: 700;
     background: #00b359;

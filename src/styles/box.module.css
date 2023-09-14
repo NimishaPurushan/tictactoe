@@ -1,17 +1,32 @@
 .box {
-    border: "2px inset black";
- 	font-size: "100px";
+    font-family: Arial;
+    font-size: 40px;
+    color: black;
+    font-weight: 700;
     width: 100%;
     height: 100%;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
-    background: white;
-    border: 1px solid white; /* Add border to inner boxes */
-}
+    justify-content: center; */
+    background: #F5F5F5;
+    border: 3px solid white; /* Add border to inner boxes */
+    cursor: pointer;}
 
 /* Style alternate boxes */
 .box:nth-child(odd) {
-    background: white; /* Make alternate boxes white */
-    border: 1px solid gray; /* Add border to inner boxes */
+    font-family: Arial;
+    font-size: 40px;
+    color: black;
+    background: #F5F5F5; /* Make alternate boxes white */
+    border: 3px solid white; /* Add border to inner boxes */
 }
+
+/* Style for winning squares */
+.winningbox {
+    color: darkgray; /* Change the color to your preference */
+    transition: background-color 0.5s;
+    font-size: 40px;
+    font-weight: 800;
+    border: 3px solid white;
+  }
+  

@@ -1,11 +1,12 @@
-import {setSquare, setXIsNext, setWinner} from '../store/tictactoe_slice.js'
+import {setSquare, setXIsNext, setWinner, setWinnerCells} from '../store/tictactoe.slice.js'
 import {useDispatch, useSelector} from 'react-redux'
 import React, { useEffect } from 'react'
 import Box from './box'
 import {checkWinner, findBestMove} from '../utils/calculateWinner.js'
+import style from '../styles/board.module.css'
 
 // creating a sqaure box in with grid layout
-const style = {
+const style2 = {
 
         width: "300px",
         height: "300px",
@@ -17,33 +18,30 @@ const style = {
         bottom: "0",
         left: "0",
         right: "0",
-        zIndex: -1,
         margin: "auto",
         border: "none", /* Remove outer border */
         overflow: "hidden", /* Hide scrollbars */
+        outline: "none", /* Remove Chrome outline */
+        
 };
 
 // creating a board with 9 boxes
 const Board = () => {
     const dispatch = useDispatch()
-    const a = useSelector(state => state.tictactoe)
-    console.log(a)
     const value = useSelector(state => state.tictactoe.squares)
     const isUserTurn = useSelector(state => state.tictactoe.isUserTurn)
-    const winner = useSelector(state => state.tictactoe.winner)
-  
+    const winner = useSelector(state => state.tictactoe.winner)  
 
     useEffect(() => {
         if (!isUserTurn) {
-            console.log("Boar----");
             // Let's assume computermove is synchronous
             let move = findBestMove([...value]);
-            console.log("move:",move)
             dispatch(setSquare({ index: move, value: 'O' }));
-            const newWinner = checkWinner(value);
+            const [newWinner, WinningCells] = checkWinner(value);
             console.log(newWinner)
             if (newWinner) {
                 dispatch(setWinner(newWinner));
+                dispatch(setWinnerCells(WinningCells));
             }
             dispatch(setXIsNext(!isUserTurn)); // Re-enable user's turn after computer's move
         }
@@ -60,8 +58,7 @@ const Board = () => {
 
     return (
         <div>
-        <div style={style}>
-
+        <div className={style.board}>
             {[ ...Array(9)].map((_, pos) => 
             <Box 
             key={pos} name={pos} 

@@ -1,21 +1,23 @@
 import Board from "./board";
 import Message from "./message";
 import Start from "./refresh";
-import {reset} from '../store/tictactoe_slice.js'
+import {reset, setXIsNext} from '../store/tictactoe.slice.js'
 import {useDispatch, useSelector} from 'react-redux'
 
 const Game = () => {
     const dispatch = useDispatch()
+    const isUserTurn = useSelector(state => state.tictactoe.isUserTurn)
     
     const start = () => {
         dispatch(reset())
     }
 
     return (
-        <div>        
+        <div >      
+            <Start onClick={start} value={"Start"} />  
+            <h1>{isUserTurn? "Your Turn": "Computer Turn"}</h1>
             <Board />
             <Message />
-            <Start onClick={start} value={'Start'} />
         </div>
     )
 }

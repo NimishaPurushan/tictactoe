@@ -33,7 +33,7 @@ function minimax(board, depth, isMaximizing) {
         'draw': 0,
     };
 
-    const result = checkWinner(board);
+    const [result, winningCells] = checkWinner(board);
 
     if (result !== null) {
         return scores[result];
@@ -80,15 +80,15 @@ const checkWinner = (board) => {
     for (const combo of winningCombos) {
         const [a, b, c] = combo;
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-            return board[a]; // Return the winning player ('X' or 'O')
+            return [board[a], combo]; 
         }
     }
 
     if (board.every((square) => square !== null)) {
-        return 'draw'; // If all squares are filled, it's a draw
+        return ['draw',null]; // If all squares are filled, it's a draw
     }
 
-    return null; // No winner yet
+    return [null,null]; // No winner yet
 };
 
 export {findBestMove, checkWinner};
